@@ -17,7 +17,7 @@ connection.connect(err => {
 })
 
 connection.getCatReviews = (catName, cb) => {
-    connection.query('select * from reviews INNER JOIN cats ON (cats.catName=(?) AND reviews.cat_id=cats.id )', catName, (err, results) => {
+    connection.query(`select * from reviews INNER JOIN cats ON (cats.catName='${catName}' AND reviews.cat_id=cats.id)`, catName, (err, results) => {
         if (err) {
             console.log(err, 'err in database query')
             cb(err, null);
@@ -25,29 +25,32 @@ connection.getCatReviews = (catName, cb) => {
             cb(null, results);
         }
     })
-};
+}
 
-// connection.filterReviewsByType = (filter, cb) => {
-//     connection.query('select * from reviews INNER JOIN cats ON (cats.catName=(?) AND reviews.cat_id=cats.id reviews.review_value=(?) )', filter, (err, results) => {
-//         if (err) {
-//             console.log(err, 'err in database query')
-//             cb(err, null);
-//         } else {
-//             cb(null, results);
-//         }
-//     })
-// };
+connection.addReview = (body, cb) => {
+const { catId, author, title, content, rating, value, taste, quality, recommendation } = body;
+    connection.query(`insert into reviews (cat_id, review_author, review_title, review_content, review_rating, review_value, review_taste, review_quality, recommendation) values ('${body.catId}', '${body.author}', '${body.title}', '${body.content}', '${body.rating}', '${body.value}', '${body.taste}', '${body.quality}', '${body.recommendation}')`, (err, results) => {
+        if (err) {
+        console.log(err, 'err in db query')
+            cb(err, null);
+        } else {
+        console.log('successfully added review to db')
+            cb(null, results);
+        }
+    })
+}
 
-// connection.addReview = (author, title, content, rating, recommendation, cb) => {
-//     connection.query('insert into reviews (review_author, review_title, review_content, review_rating, review_value, review_taste, review_quality, review_recommendation) values ( review_author=(?))', params, (err, results) => {
-//         if (err) {
-//         console.log(err, 'err in db query')
-//             cb(err, null);
-//         } else {
-//             cb(null, results);
-//         }
-//     })
-// }
-
-
+connection.updateReview = (body, cb) => {
+const { review_is_helpful, id } = body;
+    connection.query(`update reviews set review_is_helpful='${body.review_is_helpful}' where id='${body.id}'`, (err, results) => {
+        if (err) {
+            console.log(err, 'err in db query')
+            cb(err, null);
+        } else {
+            console.log(results)
+            cb(null, results);
+        }
+    })
+}
+ 
 module.exports = connection;
