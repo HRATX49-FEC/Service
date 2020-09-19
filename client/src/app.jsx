@@ -9,6 +9,7 @@ class App extends React.Component {
     super(props);
       this.state = {
         reviews: [],
+        currentCat: '',
         expanded: false,
         sortTypes: ['most recent', 'highest rated', 'lowest rated', 'most helpful'],
         numberOfReviews: 0,
@@ -24,15 +25,20 @@ class App extends React.Component {
         recommendations: 0,
         recommendationPercent: 0,
         form: {
+          catId: 9,
+          author: 'user_name',
           title: '',
           content: '',
-          rating: {
-            'Value': 0,
-            'Taste': 0,
-            'Quality': 0
-          }
-        }
+          rating: 0,
+          value: 0,
+          taste: 0,
+          quality: 0,
+          recommendation: 'Would recommend'
+        },
+        modal: false,
+        errMessage: ''
       }
+	    this.toggle = this.toggle.bind(this);
       this.getAverageRating = this.getAverageRating.bind(this);
       this.getAllReviewsAverages = this.getAllReviewsAverages.bind(this);
       this.getRecommendations = this.getRecommendations.bind(this);
@@ -42,20 +48,39 @@ class App extends React.Component {
       this.sortBy = this.sortBy.bind(this);
       this.writeReview = this.writeReview.bind(this);
       this.changeField = this.changeField.bind(this);
+      this.addReview = this.addReview.bind(this);
   }
 
+
+	toggle() {
+		this.setState(prevState => ({
+			modal: !prevState.modal
+		}))
+	}
+
   filterByRating(e) {
+    e.preventDefault();
     let filter = e.target.value;
-    axios.get('./reviews' , { params: { filter }})
-    .then(res => {
+    var filteredReviews = this.state.reviews;
+    if (filter === '5')
+      filteredReviews = this.state.reviews.filter((review) => { return review.review_value == filter })
+    else if (filter === '4')
+      filteredReviews = this.state.reviews.filter((review) => { return review.review_value == filter })
+    else if (filter === '3')
+      filteredReviews = this.state.reviews.filter((review) => { return review.review_value == filter })
+    else if (filter === '2')
+      filteredReviews = this.state.reviews.filter((review) => { return review.review_value == filter })
+    else if (filter === '1')
+      filteredReviews = this.state.reviews.filter((review) => { return review.review_value == filter })
       this.setState({
-      reviews: res.data,
-      numberOfReviews: res.data.length
+        reviews: filteredReviews,
+        numberOfReviews: filteredReviews.length
+        // recommendations: recs,
       })
-    })
-    .catch(err => {
-      console.log(err, 'err getting filtered reviews');
-    })
+      this.getAllReviewsAverages(filteredReviews);
+      let avg =this.getAverageRating(filteredReviews);
+      let recs = this.getRecommendations(filteredReviews);
+      this.setState({ recommendations: recs.length, avgRating: avg  });
   }
 
   getRecommendations(reviews) {
@@ -71,7 +96,7 @@ class App extends React.Component {
     this.setState({
       recommendations: totalRecommendations,
       recommendationPercent: percent
-    });
+    })
   }
 
   getAverageRating(reviews) {
@@ -90,6 +115,7 @@ class App extends React.Component {
   }
 
   getAllReviewsAverages(reviews) {
+  var reviews = this.state.reviews;
       var totalStars = 0,
           totalVal = 0,
           totalTaste = 0,
@@ -132,19 +158,27 @@ class App extends React.Component {
         filteredReviews = this.state.reviews.sort((a, b) => { return b.review_Is_Helpful - a.review_Is_Helpful })
     else { filteredReviews = this.state.reviews.sort((a, b) => { return a.id - b.id }) }
     this.setState({
-      reviews: filteredReviews,
+      reviews: filteredReviews
     })
   }
 
   updateHelpfulCounter(e, i) {
+    e.preventDefault();
     let reviews = this.state.reviews;
     let review = reviews[i];
-    review.review_is_helpful = review.review_is_helpful += 1;
+    review.review_is_helpful ++;
     this.setState({ reviews });
+    axios.patch('/reviews', { params: { review }})
+    .then(res => {
+      console.log('review was successfully updated');
+    })
+    .catch(err => {
+      console.log(err, 'review could not be updated');
+    })
   }
 
   getReviews(catName) {
-    axios.get('/reviews', {params: {catName}})
+    axios.get('/reviews', { params: {catName}})
       .then((res) => {
       let reviews = res.data;
       reviews.forEach((review) => {
@@ -156,8 +190,9 @@ class App extends React.Component {
       })
       window.totalReviews = res.data.length;
       this.setState({
-      reviews: reviews,
-      numberOfReviews: reviews.length
+        reviews: reviews,
+        numberOfReviews: reviews.length,
+        currentCat: catName
       })
       return this.state.reviews;
     })
@@ -172,11 +207,22 @@ class App extends React.Component {
   }
 
   writeReview() {
-    var form = this.state.form;
     $('#reviewButton').on('click', function() {
-      $('#createReview').toggle();
+      if ($('#createReview').attr('hidden', 'true')) {
+        $('#createReview').css('visibility', 'visibile');
+      } else {
+        $('#createReview').css('visibility', 'hidden');
+      }
     });
-    this.setState({ form });
+  }
+
+  addReview(e) {
+  e.preventDefault();
+  let form = this.state.form
+  console.log(form);
+    axios.post('./reviews', { form })
+    .then(res => console.log(res, 'review was successfully created'))
+    .catch(err => console.log(err, 'err creating review from client'))
   }
 
   componentDidMount() {
@@ -195,13 +241,18 @@ class App extends React.Component {
   }
 
   changeField(e, field) {
-    let form = this.state.form;
-    form[field] = event.target.value;
-    console.log(form);
-    this.setState({ form });
+    e.preventDefault();
+    let newReview = this.state.form;
+    newReview[field] = e.target.value;
+    newReview.forEach((f) => {
+      if (newReview[f] === '') {
+        this.setState({ errMessage: `missing ${f}`
+        })
+        return true
+      } 
+      else { return false }
+    })
   }
-
-
 
   render() {
     return ( 
@@ -210,14 +261,18 @@ class App extends React.Component {
         <Reviews
           reviews={this.state.reviews}
           state={this.state}
-          sort={(e) => this.sortBy(e)}
+          sort={this.sortBy}
           sortTypes={this.state.sortTypes}
           filter={this.filterByRating}
           helpful={this.updateHelpfulCounter}
           createReview={this.writeReview}
           expanded={this.state.expanded}
           formData={this.state.form}
-          form={this.changeField}
+          changeField={this.changeField}
+          writeReview={this.writeReview}
+          addReview={this.addReview}
+          toggle={this.toggle}
+          modal={this.state.modal}
         />
       </>
      )

@@ -183,7 +183,7 @@ INSERT INTO cats (catName, categoryID) VALUES ('Raven', 4);
 -- Reviews for 12 cats to show for the MVP --
 
 INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_value, review_taste, review_quality, review_content, review_is_helpful, review_is_not_helpful, recommendation) VALUES
-(1, 'This is a great cat. I can say I\'m happy with the choice I made.', 'user_name', 4, 4, 3, 5, 'I had a great time picking out this cat. The staff was PURRIFIC!! However, I would never get another cat.', 0, 0, "Would recommend");
+(1, "This is a great cat. I can say I\'m happy with the choice I made.", 'user_name', 4, 4, 3, 5, 'I had a great time picking out this cat. The staff was PURRIFIC!! However, I would never get another cat.', 0, 0, "Would recommend");
 INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_value, review_taste, review_quality, review_content, review_is_helpful, review_is_not_helpful, recommendation) VALUES
 (1, 'This is the most playful cat!!', 'user_name', 5, 5, 4, 4, 'They really like their toys and cat nip', 0, 0, "Would recommend");
 INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_value, review_taste, review_quality, review_content, review_is_helpful, review_is_not_helpful, recommendation) VALUES
@@ -197,15 +197,15 @@ INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_
 INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_value, review_taste, review_quality, review_content, review_is_helpful, review_is_not_helpful, recommendation) VALUES
 (3,'Cuddle bug', 'user_name', 4, 4, 5, 3, 'She really enjoys her naps with me in our sun room.', 0, 0, "Would recommend");
 INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_value, review_taste, review_quality, review_content, review_is_helpful, review_is_not_helpful, recommendation) VALUES
-(3,'Curious George', 'user_name', 3, 3, 2 , 2 , 'One day I couldn\'t find the cat because he wondered into my attic. After calling the cat for several hours I found him covered in dust bunnies. Make sure to not leave your attic door open for any reason.', 0, 0, "Would recommend");
+(3,'Curious George', 'user_name', 3, 3, 2 , 2 , "One day I couldn\'t find the cat because he wondered into my attic. After calling the cat for several hours I found him covered in dust bunnies. Make sure to not leave your attic door open for any reason.", 0, 0, "Would recommend");
 INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_value, review_taste, review_quality, review_content, review_is_helpful, review_is_not_helpful, recommendation) VALUES
-(4, 'Pleasantly surprised with his coloring', 'user_name', 3, 4, 2 , 2 , 'The photos of this cat online looked like he was going to be a darker gray. However, when i got him he was salt and pepper. Still cute, I\'m actually happier with his coloring in person', 0, 0, "Would recommend");
+(4, 'Pleasantly surprised with his coloring', 'user_name', 3, 4, 2 , 2 , "The photos of this cat online looked like he was going to be a darker gray. However, when i got him he was salt and pepper. Still cute, I\'m actually happier with his coloring in person", 0, 0, "Would recommend");
 INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_value, review_taste, review_quality, review_content, review_is_helpful, review_is_not_helpful, recommendation) VALUES
 (4,'MY DREAM CAT', 'user_name', 5, 5, 5, 5, 'My children always wanted a pet. I was more of a dog person, however, this cat has the personality of a dog and loves to play fetch with the kids.', 0, 0, "Would recommend");
 INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_value, review_taste, review_quality, review_content, review_is_helpful, review_is_not_helpful, recommendation) VALUES
-(4,'I\'m going to have to rehome him.', 'user_name', 1, 1, 1, 1, 'I was told this was a female cat, however, when i got home i realized it was in fact not a female and on top of that he had not been neutered', 0, 0, "Would not recommend");
+(4,"I\'m going to have to rehome him.", 'user_name', 1, 1, 1, 1, 'I was told this was a female cat, however, when i got home i realized it was in fact not a female and on top of that he had not been neutered', 0, 0, "Would not recommend");
 INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_value, review_taste, review_quality, review_content, review_is_helpful, review_is_not_helpful, recommendation) VALUES
-(5,' VERY territorial', 'user_name', 3, 3, 4, 3, 'This cat urinates all over my girlfriends clothes. I\'ve had to replace more clothes than I care to admit. Cute little guy though. Hope he grows out of it', 0, 0, "Would recommend");
+(5,' VERY territorial', 'user_name', 3, 3, 4, 3, "This cat urinates all over my girlfriends clothes. I\'ve had to replace more clothes than I care to admit. Cute little guy though. Hope he grows out of it", 0, 0, "Would recommend");
 INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_value, review_taste, review_quality, review_content, review_is_helpful, review_is_not_helpful, recommendation) VALUES
 (5,'Chatty Kathy', 'user_name', 2, 2, 4, 2, 'This cat is a little distracting. I got him at the begining of the pandemic and now that I work from home, my new office mate will not shut up', 0, 0, "Would not recommend");
 INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_value, review_taste, review_quality, review_content, review_is_helpful, review_is_not_helpful, recommendation) VALUES
@@ -217,7 +217,7 @@ INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_
 INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_value, review_taste, review_quality, review_content, review_is_helpful, review_is_not_helpful, recommendation) VALUES
 (7,'Potty training trouble', 'user_name', 2, 2, 3, 4, 'It took me five months to get this sucker litter box trained.', 0, 0, "Would not recommend");
 INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_value, review_taste, review_quality, review_content, review_is_helpful, review_is_not_helpful, recommendation) VALUES
-(7,'Hide your cords!!', 'user_name', 3, 3, 4, 2, 'I\'ve had to replace multiple extension cords in my home due to this little fellow.', 0, 0, "Would not recommend");
+(7,'Hide your cords!!', 'user_name', 3, 3, 4, 2, "I\'ve had to replace multiple extension cords in my home due to this little fellow.", 0, 0, "Would not recommend");
 INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_value, review_taste, review_quality, review_content, review_is_helpful, review_is_not_helpful, recommendation) VALUES
 (7,'Timid but sweet', 'user_name', 4, 4, 2, 2, 'This cat is very shy and often likes to hide. However, when he comes out he likes to be pet and hangout', 0, 0, "Would recommend");
 INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_value, review_taste, review_quality, review_content, review_is_helpful, review_is_not_helpful, recommendation) VALUES
@@ -225,13 +225,13 @@ INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_
 INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_value, review_taste, review_quality, review_content, review_is_helpful, review_is_not_helpful, recommendation) VALUES
 (9,'This is a special cat', 'user_name', 2, 2, 2 , 2 , 'This cat is lactose intolerant. I found out the hard way and had to replace most of my white chair covers. If you get this cat be sure to not give it milk. NO DAIRY!', 2, 0, "Would not recommend");
 INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_value, review_taste, review_quality, review_content, review_is_helpful, review_is_not_helpful, recommendation) VALUES
-(9,'Hide yo cords, hide yo cords, hide yo cords !!', 'user_name', 3, 3, 4, 2, 'I\'ve had to replace multiple extension cords in my home due to this little fellow.', 0, 0, "Would not recommend");
+(9,'Hide yo cords, hide yo cords, hide yo cords !!', 'user_name', 3, 3, 4, 2, "I\'ve had to replace multiple extension cords in my home due to this little fellow.", 0, 0, "Would not recommend");
 INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_value, review_taste, review_quality, review_content, review_is_helpful, review_is_not_helpful, recommendation) VALUES
 (9,'NIGHT OWL', 'user_name', 2, 2, 2 , 2 , 'This cat rarely comes out during the day, but I noticed my bananas were being eaten during the night. I checked the security camera and night owl STRIKES AGAIN.', 0, 0, "Would recommend");
 INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_value, review_taste, review_quality, review_content, review_is_helpful, review_is_not_helpful, recommendation) VALUES
 (9,'Time to call the Fire Department', 'user_name', 3, 4, 2 , 2 , 'Little man got out of my house and ran up my neighbors tree. I could not coax him out which resulted in the sterotypical "cat got stuck in the tree".', 0, 0, "Would not recommend");
 INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_value, review_taste, review_quality, review_content, review_is_helpful, review_is_not_helpful, recommendation) VALUES
-(9,'Michael Phelps', 'user_name', 5, 5, 4, 5, 'This cat loves going to the lake. I swear she\'s secretly training for a triathalon', 0, 0, "Would recommend");
+(9,'Michael Phelps', 'user_name', 5, 5, 4, 5, "This cat loves going to the lake. I swear she\'s secretly training for a triathalon", 0, 0, "Would recommend");
 INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_value, review_taste, review_quality, review_content, review_is_helpful, review_is_not_helpful, recommendation) VALUES
 (9,'Kitty Genius', 'user_name', 4, 4, 3, 5, 'Built this cat an obstacle course that I thought would take him an hour to complete and he completed it in 12:36 much to my surprise. I guess I\ll have to make some adjustments to the course. ', 0, 0, "Would recommend");
 INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_value, review_taste, review_quality, review_content, review_is_helpful, review_is_not_helpful, recommendation) VALUES
@@ -249,7 +249,7 @@ INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_
 INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_value, review_taste, review_quality, review_content, review_is_helpful, review_is_not_helpful, recommendation) VALUES
 (12,'insta famous', 'user_name', 4, 4, 3, 5, 'This cat loves her photo shoots. And I actually just booked his first TV gig with Disney channel. My kids are ectastic!!', 0, 0, "Would recommend");
 INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_value, review_taste, review_quality, review_content, review_is_helpful, review_is_not_helpful, recommendation) VALUES
-(12,'Michael Phelps', 'user_name', 5, 5, 4, 5, 'This cat loves going to the lake. I swear she\'s secretly training for a triathalon', 0, 0, "Would recommend");
+(12,'Michael Phelps', 'user_name', 5, 5, 4, 5, "This cat loves going to the lake. I swear she\'s secretly training for a triathalon", 0, 0, "Would recommend");
 INSERT INTO reviews (cat_id, review_title, review_author, review_rating, review_value, review_taste, review_quality, review_content, review_is_helpful, review_is_not_helpful, recommendation) VALUES
 (12,'Kitty Genius', 'user_name', 4, 4, 3, 5, 'Built this cat an obstacle course that I thought would take him an hour to complete and he completed it in 12:36 much to my surprise. I guess I\ll have to make some adjustments to the course. ', 0, 0, "Would recommend");
 

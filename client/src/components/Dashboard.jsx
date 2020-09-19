@@ -14,10 +14,10 @@ const DashBoard = (props) => {
                   <div className="dash-primary-summary">
                     <div className="first">
                       <div className="averrating">
-                        {props.data.avgRating}
+                        {Math.ceil(props.data.avgRating)}
                       </div>
                       <div id="starContainer" className="starzzz">
-                        {[...Array(5)].map((n, i) => i >= props.data.avgRating ? <i key={i} className="far fa-star"></i> : <i key={i} className="fas fa-star"></i>)}
+                        {[...Array(5)].map((n, i) => i >= props.data.avgRating ? <i style={{color: "gold"}} key={i} className="far fa-star"></i> : <i style={{color: "gold"}} key={i} className="fas fa-star"></i>)}
                       </div>
                       <div className="h-text">
                         <div>{props.data.totalNumberOfRatings} star ratings</div>
@@ -49,7 +49,7 @@ const DashBoard = (props) => {
                               fill="b85300"
                               x="19"
                               y="24.6"
-                              >{props.data.recommendationPercent}</text>
+                              >{Math.ceil(props.data.recommendationPercent)}</text>
                             </svg>
                             </div>
                         </div>

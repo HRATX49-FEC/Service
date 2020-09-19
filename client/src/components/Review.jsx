@@ -31,13 +31,12 @@ const Review = (props) => {
                 <div className="stars-container">
                   <div className="starzzz">
                     <div className="rating">
-                      {[...Array(5)].map((n, i) => i >= props.review.review_value ? <i key={i} className="far fa-star"></i> : <i key={i} className="fas fa-star"></i>)}
+                      {[...Array(5)].map((n, i) => i >= props.review.review_value ? <span key={i} className="far fa-star"></span> : <span key={i} className="fas fa-star"></span>)}
                     </div>
                   </div>
                 </div>
                 <div className="recommendation">
                   <span className={props.review.recommendation === "Would recommend" ? "recommendation-positive" : "recommendation-negative"}>
-                    {/* <div> */}
                     {props.review.recommendation === "Would recommend" ? positive : negative}
                   </span>
                   <span className="rec-padding">{props.review.recommendation}</span>
@@ -62,14 +61,13 @@ const Review = (props) => {
                             />
                       )})}
                   </div>
-              
                   <div className="helpful-button-overlay">
                     <div className="review-washelpful">
                       {`${props.review.review_is_helpful > 0 ? `${props.review.review_is_helpful}` + ' guests found this review helpful. Did you?' : "Did you find this review helpful?"}`}
                     </div>
                   {/* <div className="helpful-overlay"> */}
                     <div>
-                      <button type="button" className="review-was-helpful-feedback help-button" onClick={(e) => props.helpful(e, props.index)}>
+                      <button type="button" className="review-was-helpful-feedback help-button" id={props.id} onClick={(e) => props.helpful(e, props.index, props.id, props.name)}>
                         Helpful
                       </button>
                       <button type="button" className="review-was-helpful-feedback help-button">

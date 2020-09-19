@@ -8,7 +8,7 @@ import Button from './Button.jsx';
 const Reviews = (props) => {
     return (
       <>
-        <Button expanded={props.expanded} createReview={props.createReview} form={props.form} formData={props.formData}/>
+        <Button expanded={props.expanded} modal={props.modal} toggle={props.toggle} changeField={props.changeField} writeReview={props.writeReview} formData={props.formData} addReview={props.addReview} setRating={props.setRating} />
         <div className="reviews-h">
         <Filter sort={(e) => props.sort(e)} sortTypes={props.sortTypes} filter={props.filter} />
         <div className="matching-reviews">We found {props.state.numberOfReviews} matching reviews</div>
@@ -16,12 +16,12 @@ const Reviews = (props) => {
             return ( <Review
                 key={i}
                 id={review.id}
+                name={review.catName}
                 review={review}
                 index={i}
                 sort={(e) => props.sortBy(e)}
                 sortTypes={props.sortTypes}
                 helpful={props.helpful}
-                createReview={props.writeReview}
                 expanded={props.expanded}
               />
           )})}
